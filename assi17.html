@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    
+
+    .main {
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        /* display: none; */
+    }
+
+    .main div {
+        width: 450px;
+        height: 270px;
+        border: 2px solid red;
+        padding: 50px 50px 50px 20px;
+    }
+
+    h1 {
+        text-decoration: underline;
+        color: red;
+    }
+
+    input {
+        width: 100%;
+        padding: 10px;
+        color: red;
+        margin: 10px 0;
+        border: 1px solid red;
+        border-radius: 8px;
+
+    }
+
+    input:focus {
+        border: 2px solid rgba(255, 0, 0, 0.815);
+        border-radius: 8px;
+        outline: none;
+        caret-color: red;
+    }
+
+    button {
+        padding: 13px 20px;
+        background-color: rgba(255, 0, 0, 0.785);
+        border: none;
+        color: white;
+        border-radius: 8px;
+        cursor: pointer;
+
+    }
+
+    .run {
+        padding: 13px 50px;
+        background-color: rgba(255, 0, 0, 0.785);
+        border: none;
+        color: white;
+        border-radius: 8px;
+        cursor: pointer;
+        margin-top: 50px;
+    }
+
+
+
+
+
+    /* main2 */
+
+    .main2 {
+        text-align: center;
+        border: 2px solid red;
+        padding: 50px;
+        margin: 0 250px;
+        display: none;
+    }
+
+    .dice {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+    }
+
+    .cou {
+        display: flex;
+        justify-content: center;
+
+    }
+
+    #inpl1,
+    #inpl2 {
+        color: red;
+    }
+
+
+
+
+
+    @media screen and (min-width: 320px) and (max-width:480px) {
+        .main2{
+            margin: 0;
+        }
+        .dice {
+            flex-direction: column;
+
+    }
+    }
+</style>
+
+<body>
+    <div class="main" id="main">
+        <div>
+            <h1>Welcome to Dice Game</h1>
+            <input type="text" name="" placeholder=" Player First Name" id="player1">
+            <input type="text" name="" placeholder=" Player Second Name" id="player2">
+            <button onclick="fun()">Start Game</button>
+        </div>
+    </div>
+    <br>
+    <br>
+    <br>
+
+
+    <div class="main2" id="main2">
+        <h1 id="won"></h1>
+        <div class="cou">
+            <h2 id="inpl1"></h2>
+            <h2 id="count1"></h2>
+        </div>
+        <div class="cou">
+            <h2 id="inpl2"></h2>
+            <h2 id="count2"></h2>
+        </div>
+        <div class="dice">
+            <div class="dice1">
+                <h2 id="inpl3">:</h2> <img id="my1" src="img/dice1.png" alt="">
+            </div>
+            <div class="dice2">
+                <h2 id="inpl4">:</h2> <img id="my2" src="img/dice1.png" alt="">
+            </div>
+        </div>
+        <button class="run" onclick="fun1()">RUN</button>
+    </div>
+
+</body>
+
+
+<script>
+
+    function fun() {
+        var a = document.getElementById("main")
+        var b = document.getElementById("main2")
+        a.style.display = "none"
+        b.style.display = "block"
+        var p1 = document.getElementById("player1").value
+        var p2 = document.getElementById("player2").value
+        document.getElementById("inpl1").innerHTML = p1
+        document.getElementById("inpl2").innerHTML = p2
+        document.getElementById("inpl3").innerHTML = p1
+        document.getElementById("inpl4").innerHTML = p2
+
+    }
+
+
+    var sum = 0
+    var sum1 = 0
+
+
+
+    function fun1() {
+        // An array of image URLs
+        var images = [
+            "img/dice1.png",
+            "img/dice2.png",
+            "img/dice3.png",
+            "img/dice4.png",
+            "img/dice5.png",
+            "img/dice6.png",
+           
+
+        ];
+
+        var randomNumber = Math.floor(Math.random() * images.length);
+        var randomNumber1 = Math.floor(Math.random() * images.length);
+
+        var image = document.getElementById("my1").src = images[randomNumber];
+        var image1 = document.getElementById("my2").src = images[randomNumber1];
+
+        // image.src = images[randomNumber];
+        // image1.src = images[randomNumber1];
+        var p1 = document.getElementById("player1").value
+        var p2 = document.getElementById("player2").value
+        if (image < image1) {
+            document.getElementById("won").innerHTML = p2 + " WON!!"
+            sum = sum + 1;
+            console.log(sum);
+            document.getElementById("count2").innerHTML = " : " + sum
+
+        }
+        else if (image > image1) {
+            document.getElementById("won").innerHTML = p1 + " WON!!"
+            sum1 = sum1 + 1;
+            console.log(sum);
+            document.getElementById("count1").innerHTML = " : " + sum1
+        }
+        else {
+            document.getElementById("won").innerHTML = " DRAW!! "
+
+        }
+    }
+
+
+
+
+
+</script>
+
+</html>
