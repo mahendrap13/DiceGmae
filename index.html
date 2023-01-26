@@ -67,7 +67,18 @@
         cursor: pointer;
         margin-top: 50px;
     }
+    
+    .error {
+        display: none;
+        background-color: red;
+        color: white;
+        width: 100px;
+        padding: 1px;
+        border-radius: 7px;
+        margin: -7px 0 0 7px;
+        font-size: 12px;
 
+    }
 
 
 
@@ -136,8 +147,10 @@
         <div>
             <h1>Welcome to Dice Game</h1>
             <input type="text" name="" placeholder=" Player First Name" id="player1">
+            <p class="error" id="num1">Fill the name</p>
             <input type="text" name="" placeholder=" Player Second Name" id="player2">
-            <button onclick="fun()">Start Game</button>
+            <p class="error" id="num1">Fill the name</p>
+            <button onclick="error(),fun()">Start Game</button>
         </div>
     </div>
     
@@ -169,12 +182,56 @@
 
 
 <script>
+    
+    
+    function error() {
+        var raju = document.getElementById("player1")
+        var mahi = document.getElementById("player2")
+        var main = document.getElementById("main")
+        var main2 = document.getElementById("main2")
+
+        if (raju.value.trim() == "") {
+            var b = document.getElementById("num1")
+            b.style.display = "block"
+            flag = false
+
+
+        }
+        else if (raju.value.trim() !== "") {
+            var b = document.getElementById("num1")
+            b.style.display = "none"
+            flag = false
+            main.style.display = "none"
+            main2.style.display = "block"
+        }
+
+        if (mahi.value.trim() == "") {
+            var b = document.getElementById("num2")
+            b.style.display = "block"
+            flag = false
+
+
+        }
+        else if (mahi.value.trim() !== "") {
+            var b = document.getElementById("num2")
+            b.style.display = "none"
+            flag = false
+            main.style.display = "none"
+            main2.style.display = "block"
+        }
+    }
+
+
+
+
+
+
 
     function fun() {
-        var a = document.getElementById("main")
-        var b = document.getElementById("main2")
-        a.style.display = "none"
-        b.style.display = "block"
+//         var a = document.getElementById("main")
+//         var b = document.getElementById("main2")
+//         a.style.display = "none"
+//         b.style.display = "block"
         var p1 = document.getElementById("player1").value
         var p2 = document.getElementById("player2").value
         document.getElementById("inpl1").innerHTML = p1
